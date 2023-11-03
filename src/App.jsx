@@ -1,6 +1,9 @@
 import React, { useRef, useState } from "react";
 import ImageCard from "./components/ImageCard";
 import { MOCK_DATA } from "./constant/mockData";
+import Card from "./components/ui/Card";
+import CheckBox from "./components/ui/CheckBox";
+import Button from "./components/ui/Button";
 
 const App = () => {
   /**
@@ -80,45 +83,47 @@ const App = () => {
 
   return (
     <div className="p-2 lg:p-4 2xl:p-10">
-      <div className="w-full md:w=[90%] 2xl:w-[80%] mx-auto shadow-xl rounded-md border">
-        <div className="flex items-center justify-between px-6 py-3 border-b">
-          <label className="inline-flex items-center gap-2">
-            <input
-              type="checkbox"
+      <Card
+        header={
+          <>
+            <CheckBox
+              label={
+                !selectedData?.length
+                  ? "Select All"
+                  : `${selectedData?.length} file selected.`
+              }
               onChange={(e) => parentSelectHandler(e.target.checked)}
               checked={parentSelectorCheckedHandler(mockData)}
             />
-            <span>
-              {!selectedData?.length
-                ? "Select All"
-                : `${selectedData?.length} file selected.`}
-            </span>
-          </label>
-          <button className="text-red-500" onClick={deleteHandler}>
-            Delete files
-          </button>
-        </div>
-        <div className="grid grid-cols-1 md:grid-cols-5 items-start px-6 py-3 gap-4">
-          {mockData.map((item, i) => (
-            <div
-              key={i}
-              className={i === 0 ? "md:row-span-2 md:col-span-2" : ""}
-              draggable
-              onDragStart={() => (dragItem.current = i)}
-              onDragEnter={() => (draggedOverItem.current = i)}
-              onDragEnd={sortHandler}
-              onDragOver={(e) => e.preventDefault()}
-            >
-              <ImageCard
-                src={item?.attachemnt}
-                alt={item?.name}
-                onChange={(checked) => selectHandler(item, checked)}
-                checked={selectedData.some((mItem) => mItem === item)}
-              />
-            </div>
-          ))}
-        </div>
-      </div>
+            <Button
+              label="Delete Files"
+              className="text-red-500"
+              onClick={deleteHandler}
+            />
+          </>
+        }
+        cardContent={
+          <div className="grid grid-cols-1 md:grid-cols-5 items-start px-6 py-3 gap-4">
+            {mockData.map((item, i) => (
+              <div
+                key={i}
+                className={i === 0 ? "md:row-span-2 md:col-span-2" : ""}
+                draggable
+                onDragStart={() => (dragItem.current = i)}
+                onDragEnter={() => (draggedOverItem.current = i)}
+                onDragEnd={sortHandler}
+                onDragOver={(e) => e.preventDefault()}
+              >
+                <ImageCard
+                  data={item}
+                  checkHandler={(checked) => selectHandler(item, checked)}
+                  checked={selectedData.some((mItem) => mItem === item)}
+                />
+              </div>
+            ))}
+          </div>
+        }
+      />
     </div>
   );
 };

@@ -1,15 +1,13 @@
 import React from "react";
+import CheckBox from "./ui/CheckBox";
 
 const ImageCard = ({
-  src = "",
-  alt = "",
+  data = {},
   checked = false,
-  onChange = (checked) => {},
+  checkHandler = (checked) => {},
 }) => {
   return (
-    <div
-      className={`cursor-move border rounded-md overflow-hidden relative group w-full h-full`}
-    >
+    <div className="border rounded-md overflow-hidden relative group w-full h-full">
       <div
         className={`absolute inset-0 ${
           !checked
@@ -17,13 +15,12 @@ const ImageCard = ({
             : "bg-[rgba(0,0,0,0.1)]"
         }`}
       ></div>
-      <input
-        type="checkbox"
+      <CheckBox
         className="absolute top-3 left-3"
-        onChange={(e) => onChange(e.target.checked)}
+        onChange={(e) => checkHandler(e.target.checked)}
         checked={checked}
       />
-      <img src={src} alt={alt} className="w-full h-full" />
+      <img src={data?.attachemnt} alt={data?.name} className="w-full h-full" />
     </div>
   );
 };
