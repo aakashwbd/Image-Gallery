@@ -36,13 +36,11 @@ const Gallery = () => {
    * Create the 'checkedHandler' function, which is used for checked or unchecked data.
    */
   const checkedHandler = (item, checked) => {
-    setSelectedData((prevState) => {
-      if (checked) {
-        return [...prevState, item];
-      } else {
-        return prevState.filter((fItem) => fItem !== item);
-      }
-    });
+    setSelectedData((prevState) =>
+      checked
+        ? [...prevState, item]
+        : prevState.filter((fItem) => fItem !== item)
+    );
   };
 
   /**
