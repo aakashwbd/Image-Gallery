@@ -83,22 +83,28 @@ const Gallery = () => {
   return (
     <Card
       header={
-        <>
-          <CheckBox
-            label={
-              !selectedData?.length
-                ? "Select All"
-                : `${selectedData?.length} file selected.`
-            }
-            onChange={(e) => parentSelectHandler(e.target.checked)}
-            checked={parentSelectorCheckedHandler(mockData)}
-          />
-          <Button
-            label="Delete Files"
-            className="text-red-500"
-            onClick={deleteHandler}
-          />
-        </>
+        !selectedData?.length ? (
+          <>
+            <h4>Gallery</h4>
+          </>
+        ) : (
+          <>
+            <CheckBox
+              label={
+                !selectedData?.length
+                  ? "Select All"
+                  : `${selectedData?.length} file selected.`
+              }
+              onChange={(e) => parentSelectHandler(e.target.checked)}
+              checked={parentSelectorCheckedHandler(mockData)}
+            />
+            <Button
+              label="Delete Files"
+              className="text-red-500"
+              onClick={deleteHandler}
+            />
+          </>
+        )
       }
       cardContent={
         <div className="grid grid-cols-1 md:grid-cols-5 items-start px-6 py-3 gap-4">
