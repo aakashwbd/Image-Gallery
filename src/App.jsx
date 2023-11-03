@@ -1,11 +1,12 @@
 import React from "react";
+import GalleryLayout from "./Layouts/GalleryLayout";
 import Gallery from "./components/Gallery";
 
 const App = () => {
   return (
-    <div className="p-2 lg:p-4 2xl:p-10">
+    <GalleryLayout>
       <Gallery />
-    </div>
+    </GalleryLayout>
   );
 };
 

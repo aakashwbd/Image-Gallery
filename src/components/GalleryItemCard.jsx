@@ -1,7 +1,7 @@
 import React from "react";
 import CheckBox from "./ui/CheckBox";
 
-const ImageCard = ({
+const GalleryItemCard = ({
   data = {},
   checked = false,
   checkHandler = (checked) => {},
@@ -25,4 +25,4 @@ const ImageCard = ({
   );
 };
 
-export default ImageCard;
+export default GalleryItemCard;

@@ -1,6 +1,6 @@
 import React, { useRef, useState } from "react";
 import { MOCK_DATA } from "../constant/mockData";
-import ImageCard from "./ImageCard";
+import GalleryItemCard from "./GalleryItemCard";
 import Button from "./ui/Button";
 import Card from "./ui/Card";
 import CheckBox from "./ui/CheckBox";
@@ -80,6 +80,7 @@ const Gallery = () => {
       setSelectedData([]);
     }
   };
+
   return (
     <Card
       header={
@@ -112,7 +113,7 @@ const Gallery = () => {
               onDragEnd={sortHandler}
               onDragOver={(e) => e.preventDefault()}
             >
-              <ImageCard
+              <GalleryItemCard
                 data={item}
                 checkHandler={(checked) => checkedHandler(item, checked)}
                 checked={selectedData.some((mItem) => mItem === item)}
