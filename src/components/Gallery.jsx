@@ -4,6 +4,7 @@ import GalleryItemCard from "./GalleryItemCard";
 import Button from "./ui/Button";
 import Card from "./ui/Card";
 import CheckBox from "./ui/CheckBox";
+import FileUploader from "./ui/FileUploader";
 
 const Gallery = () => {
   /**
@@ -118,6 +119,7 @@ const Gallery = () => {
               />
             </div>
           ))}
+          <FileUploader />
         </div>
       }
     />
