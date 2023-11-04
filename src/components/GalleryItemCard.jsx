@@ -20,7 +20,7 @@ const GalleryItemCard = ({
         onChange={(e) => checkHandler(e.target.checked)}
         checked={checked}
       />
-      <img src={data?.attachemnt} alt={data?.name} className="w-full h-full" />
+      <img src={data?.attachment} alt={data?.name} className="w-full h-full" />
     </div>
   );
 };
